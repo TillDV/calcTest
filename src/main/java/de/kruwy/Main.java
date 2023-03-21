@@ -1,14 +1,19 @@
 package de.kruwy;
 
 import de.kruwy.eval.Formula;
-import de.kruwy.objects.Cell;
+
+import static de.kruwy.eval.VariableReplacement.evalVariables;
+import static de.kruwy.eval.VariableReplacement.variables;
 
 public class Main {
     public static void main(String[] args) {
 
-        Formula formula = new Formula("abc(def(ghi)jkl)mno(pqr)stu");
+        variables.put("name", "Mensch");
+        variables.put("name2", "Bob");
 
-        formula.fullSplit();
+        Formula formula = new Formula("Hallo ${name}! Ich bin (${name2}!)");
+
+        formula.eval();
 
 
     }
